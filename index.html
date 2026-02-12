@@ -108,6 +108,12 @@
         "The way you always stand out"
       ];
 
+      const GALLERY_IMAGES = [
+        "IMG_1778.MOV",
+        "IMG_7556.heic",
+        "IMG_9994.heic"
+      ];
+
       const NO_PHRASES = ["No", "Try again", "Wrong choice", "Not allowed", "Nice try", "Nope!", "Cant catch me"];
 
       // --- FLOATING HEARTS COMPONENT ---
@@ -331,8 +337,8 @@
                     <p className="text-lg font-medium text-valentine-800 text-center italic">"{mem}"</p>
                   </motion.div>
                 ))}
-                {/* Photo Placeholders */}
-                {[1, 2, 3].map((i) => (
+                {/* Photo Gallery */}
+                {GALLERY_IMAGES.map((img, i) => (
                   <motion.div 
                     key={`photo-${i}`}
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -340,8 +346,8 @@
                     transition={{ delay: 0.6 + (i * 0.1) }}
                     className="bg-white p-2 rounded-xl shadow-md rotate-2 hover:rotate-0 transition-transform duration-300"
                   >
-                    <div className="bg-gray-100 w-full h-48 rounded-lg flex items-center justify-center">
-                      <Camera className="text-gray-300 w-12 h-12" />
+                    <div className="w-full h-48 rounded-lg overflow-hidden bg-gray-100">
+                      <img src={img} alt="Us" className="w-full h-full object-cover" />
                     </div>
                   </motion.div>
                 ))}
