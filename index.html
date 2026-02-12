@@ -77,8 +77,8 @@
   "imports": {
     "react": "https://esm.sh/react@18.2.0",
     "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-    "framer-motion": "https://esm.sh/framer-motion@10.16.4",
-    "lucide-react": "https://esm.sh/lucide-react@0.263.1",
+    "framer-motion": "https://esm.sh/framer-motion@10.16.4?deps=react@18.2.0,react-dom@18.2.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.263.1?deps=react@18.2.0,react-dom@18.2.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "react/": "https://esm.sh/react@^19.2.4/"
   }
@@ -109,49 +109,49 @@
           id: 'nandos',
           name: "Nando's",
           description: "Cheeky Peri-Peri chicken",
-          image: "https://picsum.photos/400/300?random=1"
+          image: "https://images.unsplash.com/photo-1626071466175-10852e92f254?auto=format&fit=crop&w=400&q=80"
         },
         {
           id: 'spur',
           name: "Spur",
           description: "Steak ranches & burgers",
-          image: "https://picsum.photos/400/300?random=2"
+          image: "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=400&q=80"
         },
         {
           id: 'ocean_basket',
           name: "Ocean Basket",
           description: "Seafood platter to share",
-          image: "https://picsum.photos/400/300?random=3"
+          image: "https://images.unsplash.com/photo-1615141982880-1313d41820ce?auto=format&fit=crop&w=400&q=80"
         },
         {
           id: 'rocomamas',
           name: "RocoMamas",
           description: "Smashburgers & wings",
-          image: "https://picsum.photos/400/300?random=4"
+          image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
         },
         {
           id: 'mugg_bean',
           name: "Mugg & Bean",
           description: "Coffee & hearty meals",
-          image: "https://picsum.photos/400/300?random=5"
+          image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=400&q=80"
         },
         {
           id: 'sushi',
           name: "Sushi Date",
           description: "Fresh rolls & sashimi",
-          image: "https://picsum.photos/400/300?random=6"
+          image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80"
         },
         {
           id: 'pizza',
           name: "Pizza",
           description: "Cheesy goodness",
-          image: "https://picsum.photos/400/300?random=7"
+          image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
         },
         {
           id: 'dessert',
           name: "Dessert Date",
           description: "Waffles, ice cream & sweets",
-          image: "https://picsum.photos/400/300?random=8"
+          image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=400&q=80"
         }
       ];
 
@@ -160,31 +160,31 @@
           id: 'smile',
           title: "Your Smile",
           description: "It lights up the entire room and makes my day instantly better.",
-          imageUrl: "https://picsum.photos/300/400?random=10"
+          imageUrl: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=400&q=80"
         },
         {
           id: 'personality',
           title: "Your Personality",
           description: "Kind, funny, and absolutely unique. I love who you are.",
-          imageUrl: "https://picsum.photos/300/400?random=11"
+          imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80"
         },
         {
           id: 'support',
           title: "Your Support",
           description: "The way you make everything feel easier just by being there.",
-          imageUrl: "https://picsum.photos/300/400?random=12"
+          imageUrl: "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=400&q=80"
         },
         {
           id: 'energy',
           title: "Your Energy",
           description: "Your vibe is infectious and brings so much joy to my life.",
-          imageUrl: "https://picsum.photos/300/400?random=13"
+          imageUrl: "https://images.unsplash.com/photo-1475721027767-p05a6db14ba3?auto=format&fit=crop&w=400&q=80"
         },
         {
           id: 'laugh',
           title: "Your Laugh",
           description: "My absolute favorite sound in the world.",
-          imageUrl: "https://picsum.photos/300/400?random=14"
+          imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80"
         }
       ];
 
@@ -203,13 +203,14 @@
       // --- COMPONENTS ---
 
       const FloatingHearts = () => {
-        const hearts = Array.from({ length: 15 }).map((_, i) => ({
+        // Create an array of hearts with deterministic ids for hydration stability if needed
+        const [hearts] = useState(() => Array.from({ length: 15 }).map((_, i) => ({
           id: i,
           size: Math.random() * 20 + 10,
           left: Math.random() * 100,
           duration: Math.random() * 5 + 5,
           delay: Math.random() * 5,
-        }));
+        })));
 
         return (
           <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
